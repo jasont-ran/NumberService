@@ -10,8 +10,8 @@ $ErrorActionPreference = 'Stop'
 
 # TODO: Add more regions here
 $loc = switch ($FunctionLocation) {
-    'centralus' { 'cus' }
-    'eastus' { 'eus' }
+    'australiaeast' { 'aue' }
+    'australiasoutheast' { 'ase' }
     default { throw "$FunctionLocation is not supported" }
 }
 
