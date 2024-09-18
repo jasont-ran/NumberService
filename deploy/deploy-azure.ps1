@@ -6,8 +6,8 @@ $ErrorActionPreference = 'Stop'
 
 $throughput = 400
 $pk = '/id'
-$primaryCosmosLocation = 'australiaeast'
-$secondaryCosmosLocation = 'australiasoutheast'
+$primaryCosmosLocation = 'centralus'
+$secondaryCosmosLocation = 'centralus'
 
 
 # RESOURCE GROUP
