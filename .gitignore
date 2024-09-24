@@ -9,3 +9,4 @@ serviceDependencies.local.json
 serviceDependencies.local.json.user
 _work
 PublishProfiles
+/test/test.ps1
