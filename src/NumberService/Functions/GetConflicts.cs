@@ -5,11 +5,12 @@ using Microsoft.Azure.Cosmos;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.Extensions.Logging;
+using NumberService.Models;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace NumberService
+namespace NumberService.Functions
 {
     public class GetConflicts
     {
@@ -38,14 +39,14 @@ namespace NumberService
 
             FeedIterator<ConflictProperties> conflictFeed = _container.Conflicts.GetConflictQueryIterator<ConflictProperties>(sql);
 
-            var conflictResults = new List<ConflictResult>();
+            var conflictResults = new List<Models.ConflictResult>();
 
             while (conflictFeed.HasMoreResults)
             {
                 FeedResponse<ConflictProperties> conflicts = await conflictFeed.ReadNextAsync();
                 foreach (ConflictProperties conflict in conflicts)
                 {
-                    var conflictResult = new ConflictResult();
+                    var conflictResult = new Models.ConflictResult();
 
                     // Read the conflicted content
                     conflictResult.Conflict = _container.Conflicts.ReadConflictContent<NumberResult>(conflict);

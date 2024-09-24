@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace NumberService
+namespace NumberService.Models
 {
     public class NumberResult
     {

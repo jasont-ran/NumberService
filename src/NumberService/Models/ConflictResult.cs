@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace NumberService
+namespace NumberService.Models
 {
     public class ConflictResult
     {

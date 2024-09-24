@@ -1,4 +1,5 @@
 ﻿using Microsoft.Azure.Cosmos;
+using Azure.Identity;
 using Microsoft.Azure.Functions.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -22,8 +23,7 @@ namespace NumberService
                     var regions = preferredRegions.Split(';').ToList();
                     options.ApplicationPreferredRegions = regions;
                 }
-
-                return new CosmosClient(Environment.GetEnvironmentVariable("CosmosDbConnectionString"), options);
+                return new CosmosClient(Environment.GetEnvironmentVariable("CosmosDbEndpoint"), new DefaultAzureCredential());
             });
         }
     }

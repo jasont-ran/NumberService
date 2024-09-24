@@ -1,6 +1,7 @@
 ﻿using Microsoft.ApplicationInsights.DataContracts;
 using Microsoft.Azure.Cosmos;
 using Newtonsoft.Json;
+using NumberService.Models;
 using System;
 using System.Linq;
 
@@ -57,7 +58,7 @@ namespace Microsoft.ApplicationInsights
             }
         }
 
-        private static string Name(NumberService.Context statistics)
+        private static string Name(Context statistics)
         {
             if (statistics is null) return null;
             return $"{statistics.ResourceType} {statistics.OperationType}";
@@ -84,10 +85,10 @@ namespace Microsoft.ApplicationInsights
         //    return host;
         //}
 
-        private static NumberService.CosmosDiagnostics Diagnostics<T>(Response<T> response)
+        private static NumberService.Models.CosmosDiagnostics Diagnostics<T>(Response<T> response)
         {
             if (response is null || response.Diagnostics is null) return null;
-            return JsonConvert.DeserializeObject<NumberService.CosmosDiagnostics>(response.Diagnostics.ToString());
+            return JsonConvert.DeserializeObject<NumberService.Models.CosmosDiagnostics>(response.Diagnostics.ToString());
         }
     }
 }

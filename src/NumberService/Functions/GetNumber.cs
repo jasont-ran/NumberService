@@ -4,10 +4,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.Cosmos;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.Http;
+using NumberService.Models;
 using System;
 using System.Threading.Tasks;
 
-namespace NumberService
+namespace NumberService.Functions
 {
     public class GetNumber
     {
@@ -21,6 +22,7 @@ namespace NumberService
                 .GetContainer(
                  Environment.GetEnvironmentVariable("CosmosDbDatabaseId"),
                  Environment.GetEnvironmentVariable("CosmosDbContainerId"));
+
         }
 
         [FunctionName("GetNumber")]
@@ -28,8 +30,6 @@ namespace NumberService
             [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "numbers/{key:alpha}")] HttpRequest req,
             string key)
         {
-
-
             var startTime = DateTime.UtcNow;
             var timer = System.Diagnostics.Stopwatch.StartNew();
             Response<NumberResult> response = null;
